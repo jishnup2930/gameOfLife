@@ -36,3 +36,15 @@ def test_neighbors_count():
     assert count_alive_neighbors(grid,0,1) == 3
     assert count_alive_neighbors(grid,1,2) == 3
     assert count_alive_neighbors(grid,2,1) == 3
+
+def test_next_generation():
+    grid = [['.','*','.'],
+            ['.','*','.'],
+            [',','*','.']]
+    next_gen = get_next_generation (grid)
+    assert next_gen == [['.','.','.'],
+                        ['*','*','*'],
+                        [',','.','.']]
+
+
+
