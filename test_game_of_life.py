@@ -48,4 +48,9 @@ def test_next_generation_single_alive():
     next_gen = get_next_generation(grid)
     assert next_gen == expected_grid
 
-
+def test_next_generation_four_alive_cells():
+    initial_grid = [['*', '*'],
+                    ['*', '*']]
+    next_generation = get_next_generation(initial_grid)
+    assert next_generation == [['*', '*'],
+                               ['*', '*']]
