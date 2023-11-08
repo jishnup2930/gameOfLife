@@ -22,3 +22,17 @@ def test_one_column_alive_pattern():
     assert display_board(input_board) == """.*.
 .*.
 .*."""
+
+def test_neighbours_count():
+    grid = [['*','.','*'],
+            ['.','*','.'],
+            ['*','.','*']]
+    assert count_neighbours(grid,1,1) == 4
+    assert count_neighbours(grid,0,0) == 1
+    assert count_neighbours(grid,2,0) == 1
+    assert count_neighbours(grid,0,2) == 1
+    assert count_neighbours(grid,2,2) == 1
+    assert count_neighbours(grid,1,0) == 3
+    assert count_neighbours(grid,0,1) == 3
+    assert count_neighbours(grid,1,2) == 3
+    assert count_neighbours(grid,2,1) == 3
