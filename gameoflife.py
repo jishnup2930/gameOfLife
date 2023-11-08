@@ -16,6 +16,7 @@ def display_board(board):
         rows.append("".join(crow))
     return "\n".join(rows)
 
+
 def count_alive_neighbors(grid, x, y):
     count = 0
     row = len(grid)
@@ -26,15 +27,16 @@ def count_alive_neighbors(grid, x, y):
                 count += 1
     return count
 
+
 def get_next_generation(grid):
-    next_gen = [['.' for _ in range(len(grid[0]))] for _ in range(len(grid))]
+    next_gen = [[Dead for _ in range(len(grid[0]))] for _ in range(len(grid))]
 
     for row in range(len(grid)):
         for col in range(len(grid[0])):
             alive = grid[row][col]
-            live_neighbors = count_neighbors(grid, row, col)
+            live_neighbors = count_alive_neighbors(grid, row, col)
 
             if (alive and 2 <= live_neighbors <= 3) or (not alive and live_neighbors == 3):
-                next_gen[row][col] = '*'
+                next_gen[row][col] = Alive
 
     return next_gen
