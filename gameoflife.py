@@ -1,3 +1,5 @@
+import random
+
 Alive = '*'
 Dead = '.'
 
@@ -29,7 +31,7 @@ def count_alive_neighbors(grid, x, y):
 
 
 def get_next_generation(grid):
-    next_gen = [[Dead for _ in range(len(grid[0]))] for _ in range(len(grid))]
+    next_gen = [[Dead for _ in range(len(list(grid[0])))] for _ in range(len(list(grid)))]
 
     for row in range(len(grid)):
         for col in range(len(grid[0])):
@@ -40,3 +42,26 @@ def get_next_generation(grid):
                 next_gen[row][col] = Alive
 
     return next_gen
+
+def main():
+    print('Welcome to Conways Game of life')
+    print('--------------------\n')
+    x_max = int(input("Enter row dimension: "))
+    y_max = int(input("Enter column dimension: "))
+    board = {
+        'dimensions': (x_max, y_max),
+        'alive': list([(x, y) for x in range(x_max) for y in range(y_max) if random.random() < 0.25])
+    }
+
+
+    print(display_board(board))
+    for _ in range(10):
+        board = {'dimensions': (x_max, y_max), 'alive': get_next_generation(board['alive'])}
+
+   
+        print(display_board(board))
+
+    print("\nConway's Game of Life  completed.")
+
+if __name__ == "__main__":
+    main()
