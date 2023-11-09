@@ -1,4 +1,5 @@
 import random
+import rich
 
 Alive = '*'
 Dead = '.'
@@ -44,24 +45,28 @@ def get_next_generation(grid):
     return next_gen
 
 def main():
-    print('Welcome to Conways Game of life')
-    print('--------------------\n')
+    rich.print('[green]Welcome to Conways Game of Life[/green]')
+    print('------------------------------\n')
     x_max = int(input("Enter row dimension: "))
     y_max = int(input("Enter column dimension: "))
+
     board = {
         'dimensions': (x_max, y_max),
         'alive': list([(x, y) for x in range(x_max) for y in range(y_max) if random.random() < 0.25])
     }
 
-
+    rich.print("[blue]\nInitial board [/blue]")
     print(display_board(board))
-    for _ in range(10):
-        board = {'dimensions': (x_max, y_max), 'alive': get_next_generation(board['alive'])}
 
-   
+    for generation in range(10):
+        next_gen = get_next_generation(board['alive'])
+
+        board['alive'] = next_gen
+
+        rich.print(f"[red]\nGeneration {generation + 1}[/red]")
         print(display_board(board))
 
-    print("\nConway's Game of Life  completed.")
+    rich.print("[green]\nConway's Game of Life completed[/green]")
 
 if __name__ == "__main__":
     main()
