@@ -2,6 +2,7 @@ Conway's Game of Life
 The Game of life also known simply as Life, is a cellular automation devised by british mathematician John Horton Conway in 1970
 
 Rules
+
 1.Any live cell with fewer  than two live neighbours dies,as if by underpopulation  
 
 2.Any live cell with two or three live neighbours lives on to the next generations
